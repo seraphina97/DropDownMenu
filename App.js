@@ -16,41 +16,45 @@ const checkedHobbies = options.filter(options => options.checked);
 const DropDown = () => {
 	return (
 		<div
-            className={`dropdown ${openDropDown ? 'open' : ''}`}
-            onClick={() => setOpenDropDown(!openDropDown)}
-          >
-            <div className="selected-hobbies">
-              {checkedHobbies.length === 0 ? (
-                <span>Select options</span>
-              ) : checkedHobbies.length === 1 ? (
-                <span>{checkedHobbies[0].label}</span>
-              ) : (
-                <span>{checkedHobbies.length} hobbies selected</span>
-              )}
-            </div>
-            <div className={`dropdown-menu ${openDropDown ? 'show' : ''}`}>
-              {options.map(option => (
-                <div className="option" key={option.value}>
-                  <label>
-                    <input
-                      type="checkbox"
-                      checked={option.checked}
-                      onClick={e => e.stopPropagation()}
-                      onChange={() => {
-                        const updatedOptions = options.map(opt =>
-                          opt.value === option.value
-                            ? { ...opt, checked: !opt.checked }
-                            : opt
-                        );
-                        setOptions(updatedOptions);
-                      }}
-                    />
-                    {option.label}
-                  </label>
-                </div>
-              ))}
-            </div>
-        </div>
+      className={`dropdown ${openDropDown ? 'open' : ''}`}
+      onClick={() => setOpenDropDown(!openDropDown)}
+    >
+      <div 
+        className="selected-hobbies"
+      >
+        {checkedHobbies.length === 0 ? (
+          <span>Select options</span>
+        ) : checkedHobbies.length === 1 ? (
+          <span>{checkedHobbies[0].label}</span>
+        ) : (
+          <span>{checkedHobbies.length} hobbies selected</span>
+        )}
+      </div>
+      <div 
+        className={`dropdown-menu ${openDropDown ? 'show' : ''}`}
+      >
+        {options.map(option => (
+          <div className="option" key={option.value}>
+            <label>
+              <input
+                type="checkbox"
+                checked={option.checked}
+                onClick={e => e.stopPropagation()}
+                onChange={() => {
+                  const updatedOptions = options.map(opt =>
+                    opt.value === option.value
+                      ? { ...opt, checked: !opt.checked }
+                      : opt
+                  );
+                  setOptions(updatedOptions);
+                }}
+              />
+              {option.label}
+            </label>
+          </div>
+        ))}
+      </div>
+    </div>
 	)
 }
 
