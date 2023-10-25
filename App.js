@@ -13,8 +13,6 @@ const [options, setOptions] = useState(optionsList);
 const [openDropDown, setOpenDropDown] = useState(false);
 const checkedHobbies = options.filter(options => options.checked);
 
-
-
 const DropDown = () => {
 	return (
 		<div
@@ -52,7 +50,7 @@ const DropDown = () => {
                 </div>
               ))}
             </div>
-          </div>
+        </div>
 	)
 }
 
